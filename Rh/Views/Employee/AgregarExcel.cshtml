@@ -1,0 +1,43 @@
+﻿<h1>Subir excel</h1>
+<h1></h1>
+<input class="form-control text-box single-line" type="file" id="input" accept=".xls,.xlsx">
+<h1></h1>
+<button class="btn btn-primary" id="button">Subir archivo</button>
+
+<script type="text/javascript">
+
+    let selectedFile;
+    console.log(window.XLSX);
+    document.getElementById('input').addEventListener("change", (event) => {
+        selectedFile = event.target.files[0];
+    })
+
+    let data = [{
+    }]
+
+    document.getElementById('button').addEventListener("click", () => {
+        XLSX.utils.json_to_sheet(data, 'out.xlsx');
+        if (selectedFile) {
+            let fileReader = new FileReader();
+            fileReader.readAsBinaryString(selectedFile);
+            fileReader.onload = (event) => {
+                let data = event.target.result;
+                let workbook = XLSX.read(data, { type: "binary" });
+                console.log(workbook);
+                workbook.SheetNames.forEach(sheet => {
+                    let dato = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+                    console.log(dato);
+                    $.ajax({
+                        type: 'POST',
+                        traditional: true,
+                        url: '@Url.Action("AgregarExcel", "Employee")',
+                        data: JSON.stringify(dato),
+                        contentType: 'application/json'
+                    });
+                });
+            }
+        }
+        alert("Archivo subido exitosamente");
+    });
+
+</script>

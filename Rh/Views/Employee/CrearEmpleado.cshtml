@@ -1,0 +1,166 @@
+﻿@using (Html.BeginForm("CrearEmpleado", "Employee"))
+{
+    <div class="form-horizontal">
+
+        <h1>Crear Empleado</h1>
+        <h4 style="color:#0094ff;"><strong>Favor de introducir la información solicitada</strong></h4>
+
+        <hr>
+
+        <h4 style="color:#8fdc6f;"><strong>Datos Personales</strong></h4>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Nombre">Nombre</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="nombre" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Apellido Paterno">Apellido Paterno</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="apellidoPaterno" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Apellido Materno">Apellido Materno</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="apellidoMaterno" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="IMSS">IMSS</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="number" name="imss" maxlength="11">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="RFC">RFC</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="rfc" maxlength="13">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="CURP">CURP</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="curp" maxlength="18">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="JobCode">Job Code</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="JobCode" maxlength="6">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="JobProfile">Job Profile</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="JobProfile" maxlength="50">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="SupervisoryOrganization">Supervisory Organization</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="SupervisoryOrganization" maxlength="100">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="SupervisoryOrganizationID">Supervisory Organization ID</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="number" name="SupervisoryOrganizationID">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="ManagerName">Manager Name</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="ManagerName" maxlength="100">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="ManagerID">Manager ID</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="number" name="ManagerID">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="LocationCode">Location Code</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="number" name="LocationCode">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Location">Location</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="Location" maxlength="100">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="HireDate">Hire Date</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="number" name="HireDate">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="JCICFBasePayDaily">JCI CF Base Pay Daily</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="number" name="JCICFBasePayDaily">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="JobCategory">Job Category</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="JobCategory" maxlength="50">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="WorkShift">Work Shift</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="WorkShift" maxlength="100">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="ShiftMexico">ShiftMexico</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="ShiftMexico" maxlength="30">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="ShiftMexico">Job Title</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" required="required" type="text" name="JobTitle" maxlength="50">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Número de reloj">Número de reloj</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="numReloj" required="required" type="number" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" class="btn btn-success">
+        </div>
+    </div>
+
+}

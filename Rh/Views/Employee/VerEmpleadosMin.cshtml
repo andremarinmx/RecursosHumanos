@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Rh.Models.Employee>
+
+@{
+    ViewBag.Title = "Empleados";
+}
+
+<h2>Empleados</h2>
+
+<p>
+    @Html.ActionLink("Completo", "VerEmpleadosMax")
+</p>
+<p>
+    @Html.ActionLink("Crear", "CrearEmpleado")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullLegalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobProfile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupervisoryOrganization)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobCategory)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullLegalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobProfile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupervisoryOrganization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobCategory)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditarEmpleado", new { id = item.ID })
+                @Html.ActionLink("Eliminar", "EliminarEmpleado", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
