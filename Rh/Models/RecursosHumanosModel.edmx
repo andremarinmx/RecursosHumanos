@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RecursosHumanosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ID_CURSO" />
+          </Key>
+          <Property Name="ID_CURSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="60" />
+          <Property Name="DURACION" Type="int" />
+          <Property Name="CALIFICACION_MIN" Type="int" />
+          <Property Name="TIPO_CURSO" Type="varchar" MaxLength="30" />
+          <Property Name="CLASIFICACION" Type="varchar" MaxLength="300" />
+          <Property Name="AREA_TEMATICA" Type="varchar" MaxLength="300" />
+          <Property Name="AREA_APLICACION" Type="varchar" MaxLength="60" />
+          <Property Name="OBJETIVO" Type="varchar" MaxLength="300" />
+          <Property Name="MODALIDAD" Type="varchar" MaxLength="30" />
+          <Property Name="COMENTARIOS" Type="varchar" MaxLength="600" />
+          <Property Name="ID_INSTRUCTOR" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="FullLegalName" Type="varchar" MaxLength="100" />
+          <Property Name="LegalNameLastName" Type="varchar" MaxLength="30" />
+          <Property Name="LegalNameSecondaryLastName" Type="varchar" MaxLength="30" />
+          <Property Name="LegalNameFirstName" Type="varchar" MaxLength="30" />
+          <Property Name="JobCode" Type="varchar" MaxLength="30" />
+          <Property Name="JobProfile" Type="varchar" MaxLength="50" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" />
+          <Property Name="SupervisoryOrganizationID" Type="int" />
+          <Property Name="SupervisoryOrganization" Type="varchar" MaxLength="100" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="ManagerName" Type="varchar" MaxLength="100" />
+          <Property Name="LocationCode" Type="int" />
+          <Property Name="Location" Type="varchar" MaxLength="100" />
+          <Property Name="HireDate" Type="varchar" MaxLength="100" />
+          <Property Name="JCICFBasePayDaily" Type="float" />
+          <Property Name="MexicoRFC" Type="varchar" MaxLength="13" />
+          <Property Name="MexicoCURP" Type="varchar" MaxLength="18" />
+          <Property Name="MexicoIMSS" Type="varchar" MaxLength="11" />
+          <Property Name="JobCategory" Type="varchar" MaxLength="50" />
+          <Property Name="WorkShift" Type="varchar" MaxLength="100" />
+          <Property Name="ShiftMexico" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Employee_Course">
+          <Key>
+            <PropertyRef Name="ID_EMPLEADO_CURSO" />
+          </Key>
+          <Property Name="ID_EMPLEADO_CURSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EMPLEADO" Type="int" />
+          <Property Name="ID_CURSO" Type="int" />
+          <Property Name="FECHA" Type="datetime" />
+          <Property Name="CALIFICACION" Type="int" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="ID_INSTRUCTOR" />
+          </Key>
+          <Property Name="ID_INSTRUCTOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="varchar" MaxLength="300" />
+          <Property Name="TIPO" Type="varchar" MaxLength="30" />
+          <Property Name="COMPANIA" Type="varchar" MaxLength="60" />
+          <Property Name="REGISTRO_STP" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <Association Name="FK__Course__ID_INSTR__286302EC">
+          <End Role="Instructor" Type="Self.Instructor" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructor">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___ID_CU__2D27B809">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Employee_Course" Type="Self.Employee_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="Employee_Course">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___ID_EM__2C3393D0">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee_Course" Type="Self.Employee_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee_Course">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RecursosHumanosModelStoreContainer">
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Course" EntityType="Self.Employee_Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instructor" EntityType="Self.Instructor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Course__ID_INSTR__286302EC" Association="Self.FK__Course__ID_INSTR__286302EC">
+            <End Role="Instructor" EntitySet="Instructor" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___ID_CU__2D27B809" Association="Self.FK__Employee___ID_CU__2D27B809">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Employee_Course" EntitySet="Employee_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___ID_EM__2C3393D0" Association="Self.FK__Employee___ID_EM__2C3393D0">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee_Course" EntitySet="Employee_Course" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RecursosHumanosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ID_CURSO" />
+          </Key>
+          <Property Name="ID_CURSO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DURACION" Type="Int32" />
+          <Property Name="CALIFICACION_MIN" Type="Int32" />
+          <Property Name="TIPO_CURSO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CLASIFICACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_TEMATICA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AREA_APLICACION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="OBJETIVO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="MODALIDAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="COMENTARIOS" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="ID_INSTRUCTOR" Type="Int32" />
+          <NavigationProperty Name="Instructor" Relationship="Self.FK__Course__ID_INSTR__286302EC" FromRole="Course" ToRole="Instructor" />
+          <NavigationProperty Name="Employee_Course" Relationship="Self.FK__Employee___ID_CU__2D27B809" FromRole="Course" ToRole="Employee_Course" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="FullLegalName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LegalNameLastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LegalNameSecondaryLastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LegalNameFirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="JobCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="JobProfile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SupervisoryOrganizationID" Type="Int32" />
+          <Property Name="SupervisoryOrganization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="ManagerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationCode" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HireDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JCICFBasePayDaily" Type="Double" />
+          <Property Name="MexicoRFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="MexicoCURP" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="MexicoIMSS" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="JobCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkShift" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShiftMexico" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee_Course" Relationship="Self.FK__Employee___ID_EM__2C3393D0" FromRole="Employee" ToRole="Employee_Course" />
+        </EntityType>
+        <EntityType Name="Employee_Course">
+          <Key>
+            <PropertyRef Name="ID_EMPLEADO_CURSO" />
+          </Key>
+          <Property Name="ID_EMPLEADO_CURSO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EMPLEADO" Type="Int32" />
+          <Property Name="ID_CURSO" Type="Int32" />
+          <Property Name="FECHA" Type="DateTime" Precision="3" />
+          <Property Name="CALIFICACION" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Employee___ID_CU__2D27B809" FromRole="Employee_Course" ToRole="Course" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___ID_EM__2C3393D0" FromRole="Employee_Course" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="ID_INSTRUCTOR" />
+          </Key>
+          <Property Name="ID_INSTRUCTOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_COMPLETO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANIA" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="REGISTRO_STP" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Course__ID_INSTR__286302EC" FromRole="Instructor" ToRole="Course" />
+        </EntityType>
+        <Association Name="FK__Course__ID_INSTR__286302EC">
+          <End Role="Instructor" Type="Self.Instructor" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructor">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="ID_INSTRUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___ID_CU__2D27B809">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Employee_Course" Type="Self.Employee_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ID_CURSO" />
+            </Principal>
+            <Dependent Role="Employee_Course">
+              <PropertyRef Name="ID_CURSO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___ID_EM__2C3393D0">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee_Course" Type="Self.Employee_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee_Course">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RecursosHumanosContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Course" EntityType="Self.Course" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Employee_Course" EntityType="Self.Employee_Course" />
+          <EntitySet Name="Instructor" EntityType="Self.Instructor" />
+          <AssociationSet Name="FK__Course__ID_INSTR__286302EC" Association="Self.FK__Course__ID_INSTR__286302EC">
+            <End Role="Instructor" EntitySet="Instructor" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___ID_CU__2D27B809" Association="Self.FK__Employee___ID_CU__2D27B809">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Employee_Course" EntitySet="Employee_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___ID_EM__2C3393D0" Association="Self.FK__Employee___ID_EM__2C3393D0">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee_Course" EntitySet="Employee_Course" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RecursosHumanosModelStoreContainer" CdmEntityContainer="RecursosHumanosContext">
+          <EntitySetMapping Name="Course">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+                <ScalarProperty Name="CALIFICACION_MIN" ColumnName="CALIFICACION_MIN" />
+                <ScalarProperty Name="TIPO_CURSO" ColumnName="TIPO_CURSO" />
+                <ScalarProperty Name="CLASIFICACION" ColumnName="CLASIFICACION" />
+                <ScalarProperty Name="AREA_TEMATICA" ColumnName="AREA_TEMATICA" />
+                <ScalarProperty Name="AREA_APLICACION" ColumnName="AREA_APLICACION" />
+                <ScalarProperty Name="OBJETIVO" ColumnName="OBJETIVO" />
+                <ScalarProperty Name="MODALIDAD" ColumnName="MODALIDAD" />
+                <ScalarProperty Name="COMENTARIOS" ColumnName="COMENTARIOS" />
+                <ScalarProperty Name="ID_INSTRUCTOR" ColumnName="ID_INSTRUCTOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FullLegalName" ColumnName="FullLegalName" />
+                <ScalarProperty Name="LegalNameLastName" ColumnName="LegalNameLastName" />
+                <ScalarProperty Name="LegalNameSecondaryLastName" ColumnName="LegalNameSecondaryLastName" />
+                <ScalarProperty Name="LegalNameFirstName" ColumnName="LegalNameFirstName" />
+                <ScalarProperty Name="JobCode" ColumnName="JobCode" />
+                <ScalarProperty Name="JobProfile" ColumnName="JobProfile" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="SupervisoryOrganizationID" ColumnName="SupervisoryOrganizationID" />
+                <ScalarProperty Name="SupervisoryOrganization" ColumnName="SupervisoryOrganization" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="JCICFBasePayDaily" ColumnName="JCICFBasePayDaily" />
+                <ScalarProperty Name="MexicoRFC" ColumnName="MexicoRFC" />
+                <ScalarProperty Name="MexicoCURP" ColumnName="MexicoCURP" />
+                <ScalarProperty Name="MexicoIMSS" ColumnName="MexicoIMSS" />
+                <ScalarProperty Name="JobCategory" ColumnName="JobCategory" />
+                <ScalarProperty Name="WorkShift" ColumnName="WorkShift" />
+                <ScalarProperty Name="ShiftMexico" ColumnName="ShiftMexico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Course">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Employee_Course">
+              <MappingFragment StoreEntitySet="Employee_Course">
+                <ScalarProperty Name="ID_EMPLEADO_CURSO" ColumnName="ID_EMPLEADO_CURSO" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CALIFICACION" ColumnName="CALIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instructor">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Instructor">
+              <MappingFragment StoreEntitySet="Instructor">
+                <ScalarProperty Name="ID_INSTRUCTOR" ColumnName="ID_INSTRUCTOR" />
+                <ScalarProperty Name="NOMBRE_COMPLETO" ColumnName="NOMBRE_COMPLETO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="COMPANIA" ColumnName="COMPANIA" />
+                <ScalarProperty Name="REGISTRO_STP" ColumnName="REGISTRO_STP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
