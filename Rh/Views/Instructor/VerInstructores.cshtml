@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Rh.Models.Instructor>
+
+@{
+    ViewBag.Title = "VerInstructores";
+}
+
+<h2>Instructores</h2>
+
+<h4 style="color:#0094ff;">
+    <strong> @Html.ActionLink("Crear", "CrearInstructores")</strong>
+</h4>
+<table class="table">
+    <tr>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.ID_INSTRUCTOR) -->
+            ID
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.NOMBRE_COMPLETO) -->
+            NOMBRE
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO)
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.COMPANIA) -->
+            COMPAÑÍA
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.REGISTRO_STP) -->
+            REGISTRO STP
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_INSTRUCTOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE_COMPLETO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPANIA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REGISTRO_STP)
+            </td>
+            <td>
+                <h5 style="color:#0094ff;">
+                    @Html.ActionLink("Editar", "EditarInstructor", new { id = item.ID_INSTRUCTOR }) |
+                    @Html.ActionLink("Eliminar", "EliminarInstructor", new { id = item.ID_INSTRUCTOR })
+                </h5>
+            </td>
+        </tr>
+    }
+
+</table>

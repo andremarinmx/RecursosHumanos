@@ -1,0 +1,67 @@
+﻿@using (Html.BeginForm("CrearInstructores", "Instructor"))
+{
+    <div class="form-horizontal">
+        <h1>Crear Instructor</h1>
+        <h4 style="color:#0094ff;"><strong>Favor de introducir la información solicitada</strong></h4>
+        <hr>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Nombre">Nombre Completo</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="nombreCompleto" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Tipo">Tipo</label>
+            <div class="col-md-9">
+                <select class="form-control" id="tipo" name="tipo" required="required" onchange="habilitar()">
+                    <option value="">Selecciona el tipo</option>
+                    <option value="Interno">Interno</option>
+                    <option value="Externo">Externo</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Tipo" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="compania">Compañía</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="compania" id="compania" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="stp">STP</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="stp" id="stp" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success">
+            </div>
+        </div>
+
+    </div>
+}
+<script type="text/javascript">
+    function habilitar() {
+        let tipo = document.getElementById("tipo");
+        let compania = document.getElementById("compania");
+        let stp = document.getElementById("stp");
+
+        if (tipo.value == "Externo" || tipo.value == "Otro") {
+            compania.value = "";
+            stp.disabled = false;
+        }
+        else {
+            if (tipo.value == "Interno") {
+                compania.value = "JCI";
+                stp.disabled = true;
+            }
+        }
+    }
+</script>

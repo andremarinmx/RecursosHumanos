@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +221,9 @@
     <Content Include="Views\Employee\VerEmpleadosMax.cshtml" />
     <Content Include="Views\Employee\EditarEmpleado.cshtml" />
     <Content Include="Views\Employee\AgregarExcel.cshtml" />
+    <Content Include="Views\Instructor\CrearInstructores.cshtml" />
+    <Content Include="Views\Instructor\VerInstructores.cshtml" />
+    <Content Include="Views\Instructor\EditarInstructor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
