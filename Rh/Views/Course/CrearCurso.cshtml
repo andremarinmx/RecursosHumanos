@@ -1,0 +1,143 @@
+﻿@using (Html.BeginForm("CrearCurso", "Course"))
+{
+    <div class="form-horizontal">
+        <h1>Crear Curso</h1>
+        <h4 style="color:#0094ff;"><strong>Favor de introducir la información solicitada</strong></h4>
+        <hr>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Nombre">Nombre</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="nombre" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Duración">Duración</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="duracion" required="required" type="number" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Calificación Mínima">Calificación Mínima</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="calificacion" required="required" type="number" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Tipo">Tipo</label>
+            <div class="col-md-9">
+                <select class="form-control" name="tipo" required="required">
+                    <option>Interno</option>
+                    <option>Externo</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Tipo" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Clasificación">Clasificación</label>
+            <div class="col-md-9">
+                <select class="form-control" name="clasificacion" required="required">
+                    <option>Sin clasificación</option>
+                    <option>Actitud</option>
+                    <option>Diagnóstico</option>
+                    <option>Externos</option>
+                    <option>Habilidad</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Clasificación" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Área temática">Área temática</label>
+            <div class="col-md-9">
+                <select class="form-control" name="areaTematica" required="required">
+                    <option>Producción general</option>
+                    <option>Servicios</option>
+                    <option>Administración, contabilidad y economía</option>
+                    <option>Comercialización</option>
+                    <option>Manteniminto y reparación</option>
+                    <option>Desarrollo personal y familiar</option>
+                    <option>Uso de las tecnologías de la información</option>
+                    <option>Seguridad</option>
+                    <option>Participación social</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="areaTematica" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Área aplicación">Área aplicación</label>
+            <div class="col-md-9">
+                <select class="form-control" name="areaAplicacion" required="required">
+                    <option>Producción</option>
+                    <option>Calidad</option>
+                    <option>Ingenería</option>
+                    <option>Mantenimiento</option>
+                    <option>Almacén</option>
+                    <option>Tool crib</option>
+                    <option>Tool room</option>
+                    <option>Recursos humanos</option>
+                    <option>Seguridad</option>
+                    <option>Cafetería</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="areaAplicacion" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Objetivo">Objetivo</label>
+            <div class="col-md-9">
+                <select class="form-control" name="objetivo" required="required">
+                    <option>Actulizar y mejorar conocimiento</option>
+                    <option>Proporcionar información de nuevas técnicas</option>
+                    <option>Preparar para ocupar puestos o vacantes</option>
+                    <option>Prevenir riegos de trabajo</option>
+                    <option>Incrementar la productividad</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="objetivo" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Modalidad">Modalidad</label>
+            <div class="col-md-9">
+                <select class="form-control" name="modalidad" required="required">
+                    <option>Presencial</option>
+                    <option>Virtual</option>
+                    <option>Mixta</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="modalidad" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Comentarios">Comentarios</label>
+            <div class="col-md-9">
+                <textarea class="form-control text-box single-line" name="comentarios" type="text" placeholder="Describir los casos en los que puso 'Otros' o decir cosas adicionales"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Instructor">Instructor</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" name="instructor" required="required" type="number" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success">
+            </div>
+        </div>
+
+    </div>
+}

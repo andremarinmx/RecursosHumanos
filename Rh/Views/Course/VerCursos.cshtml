@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Rh.Models.Course>
+
+@{
+    ViewBag.Title = "Cursos";
+}
+
+<h2>Cursos</h2>
+
+<h4 style="color:#0094ff;">
+    <strong> @Html.ActionLink("Crear", "CrearCurso")</strong>
+</h4>
+<h4 style="color:#0094ff;">
+    <strong> @Html.ActionLink("Asignar Cursos", "AsignarCursos", "EmployeeCourse")</strong>
+</h4>
+<h4 style="color:#0094ff;">
+    <strong> @Html.ActionLink("Buscar Curso Empleado", "BuscarCursosEmpleado", "EmployeeCourse")</strong>
+</h4>
+<table class="table">
+    <tr>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.ID_CURSO) -->
+            ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.DURACION) -->
+            DURACIÓN
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.CALIFICACION_MIN) -->
+            CALIFICACIÓN MÍN
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.TIPO_CURSO) -->
+            TIPO
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.CLASIFICACION) -->
+            CLASIFICACIÓN
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.AREA_TEMATICA) -->
+            ÁREA TEMÁTICA
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.AREA_APLICACION) -->
+            ÁREA DE APLICACIÓN
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OBJETIVO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODALIDAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMENTARIOS)
+        </th>
+        <th>
+            <!-- @Html.DisplayNameFor(model => model.ID_INSTRUCTOR) -->
+            INSTRUCTOR
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_CURSO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DURACION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CALIFICACION_MIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO_CURSO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CLASIFICACION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AREA_TEMATICA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AREA_APLICACION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OBJETIVO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MODALIDAD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMENTARIOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_INSTRUCTOR)
+            </td>
+            <td>
+                <h5 style="color:#0094ff;">
+                    @Html.ActionLink("Editar", "EditarCurso", new { id = item.ID_CURSO })
+                    @Html.ActionLink("Eliminar", "EliminarCurso", new { id = item.ID_CURSO })
+                </h5>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,290 @@
+﻿@model Rh.Models.Course
+
+@{
+    ViewBag.Title = "EditarCurso";
+}
+
+<h2>EditarCurso</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Curso</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.ID_CURSO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_CURSO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ID_CURSO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Nombre">Nombre</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" id="nombre" name="nombre" required="required" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.DURACION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DURACION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DURACION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Duración">Duración</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" id="duracion" name="duracion" required="required" type="number" />
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.CALIFICACION_MIN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CALIFICACION_MIN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CALIFICACION_MIN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Calificación Mínima">Calificación Mínima</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" id="calificacion" name="calificacion" required="required" type="number" />
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.TIPO_CURSO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TIPO_CURSO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TIPO_CURSO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Tipo">Tipo</label>
+            <div class="col-md-9">
+                <select class="form-control" id="tipo" name="tipo" required="required">
+                    <option>Interno</option>
+                    <option>Externo</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Tipo" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.CLASIFICACION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CLASIFICACION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CLASIFICACION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Clasificación">Clasificación</label>
+            <div class="col-md-9">
+                <select class="form-control" id="clasificacion" name="clasificacion" required="required">
+                    <option>Sin clasificación</option>
+                    <option>Actitud</option>
+                    <option>Diagnóstico</option>
+                    <option>Externos</option>
+                    <option>Habilidad</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Clasificación" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.AREA_TEMATICA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AREA_TEMATICA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AREA_TEMATICA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Área temática">Área temática</label>
+            <div class="col-md-9">
+                <select class="form-control" id="areaTematica" name="areaTematica" required="required">
+                    <option>Producción general</option>
+                    <option>Servicios</option>
+                    <option>Administración, contabilidad y economía</option>
+                    <option>Comercialización</option>
+                    <option>Manteniminto y reparación</option>
+                    <option>Desarrollo personal y familiar</option>
+                    <option>Uso de las tecnologías de la información</option>
+                    <option>Seguridad</option>
+                    <option>Participación social</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="areaTematica" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.AREA_APLICACION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AREA_APLICACION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AREA_APLICACION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Área aplicación">Área aplicación</label>
+            <div class="col-md-9">
+                <select class="form-control" id="areaAplicacion" name="areaAplicacion" required="required">
+                    <option>Producción</option>
+                    <option>Calidad</option>
+                    <option>Ingenería</option>
+                    <option>Mantenimiento</option>
+                    <option>Almacén</option>
+                    <option>Tool crib</option>
+                    <option>Tool room</option>
+                    <option>Recursos humanos</option>
+                    <option>Seguridad</option>
+                    <option>Cafetería</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="areaAplicacion" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.OBJETIVO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OBJETIVO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OBJETIVO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Objetivo">Objetivo</label>
+            <div class="col-md-9">
+                <select class="form-control" id="objetivo" name="objetivo" required="required">
+                    <option>Actulizar y mejorar conocimiento</option>
+                    <option>Proporcionar información de nuevas técnicas</option>
+                    <option>Preparar para ocupar puestos o vacantes</option>
+                    <option>Prevenir riegos de trabajo</option>
+                    <option>Incrementar la productividad</option>
+                    <option>Otro</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="objetivo" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.MODALIDAD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MODALIDAD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MODALIDAD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Modalidad">Modalidad</label>
+            <div class="col-md-9">
+                <select class="form-control" id="modalidad" name="modalidad" required="required">
+                    <option>Presencial</option>
+                    <option>Virtual</option>
+                    <option>Mixta</option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="modalidad" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.COMENTARIOS, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.COMENTARIOS, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.COMENTARIOS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Comentarios">Comentarios</label>
+            <div class="col-md-9">
+                <textarea class="form-control text-box single-line" id="comentarios" name="comentarios" type="text" placeholder="Describir los casos en los que puso 'Otros' o decir cosas adicionales"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.ID_INSTRUCTOR, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_INSTRUCTOR, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ID_INSTRUCTOR, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-3" for="Instructor">Instructor</label>
+            <div class="col-md-9">
+                <input class="form-control text-box single-line" id="instructor" name="instructor" required="required" type="number" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "VerCursos")
+</div>
+
+<script type="text/javascript">
+
+    let nombreModel = document.getElementById("NOMBRE").value;
+    let duracionModel = document.getElementById("DURACION").value;
+    let calificacionModel = document.getElementById("CALIFICACION_MIN").value;
+    let tipoModel = document.getElementById("TIPO_CURSO").value;
+    let clasificacionModel = document.getElementById("CLASIFICACION").value;
+    let tematicaModel = document.getElementById("AREA_TEMATICA").value;
+    let aplicacionModel = document.getElementById("AREA_APLICACION").value;
+    let objetivoModel = document.getElementById("OBJETIVO").value;
+    let modalidadModel = document.getElementById("MODALIDAD").value;
+    let comentariosModel = document.getElementById("COMENTARIOS").value;
+    let instructorModel = document.getElementById("ID_INSTRUCTOR").value;
+
+    let nombre = document.getElementById("nombre");
+    let duracion = document.getElementById("duracion");
+    let calificacion = document.getElementById("calificacion")
+    let tipo = document.getElementById("tipo");
+    let clasificacion = document.getElementById("clasificacion");
+    let tematica = document.getElementById("areaTematica");
+    let aplicacion = document.getElementById("areaAplicacion");
+    let objetivo = document.getElementById("objetivo");
+    let modalidad = document.getElementById("modalidad");
+    let comentarios = document.getElementById("comentarios");
+    let instructor = document.getElementById("instructor");
+
+    nombre.value = nombreModel;
+    duracion.value = duracionModel;
+    calificacion.value = calificacionModel;
+    tipo.value = tipoModel;
+    clasificacion.value = clasificacionModel;
+    tematica.value = tematicaModel;
+    aplicacion.value = aplicacionModel;
+    objetivo.value = objetivoModel;
+    modalidad.value = modalidadModel;
+    comentarios.value = comentariosModel;
+    instructor.value = instructorModel;
+
+</script>
