@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Rh.Models.Employee_Course>
+
+@{
+    ViewBag.Title = "VerCursosEmpleado";
+}
+
+<h2>Cursos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_EMPLEADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_CURSO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CALIFICACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_EMPLEADO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_CURSO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CALIFICACION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA)
+            </td>
+            <td>
+                @Html.ActionLink("Calificar", "AsignarCalificacion", new { id = item.ID_EMPLEADO_CURSO })
+                @Html.ActionLink("Eliminar", "EliminarCursoEmpleado", new { id = item.ID_EMPLEADO_CURSO })
+            </td>
+        </tr>
+    }
+
+</table>

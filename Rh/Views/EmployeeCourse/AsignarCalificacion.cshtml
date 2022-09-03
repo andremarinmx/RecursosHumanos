@@ -1,0 +1,39 @@
+﻿@model Rh.Models.Employee_Course
+
+@{
+    ViewBag.Title = "AsignarCalificacion";
+}
+
+<h2>Asignar Calificación</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.ID_EMPLEADO_CURSO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_EMPLEADO_CURSO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ID_EMPLEADO_CURSO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CALIFICACION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CALIFICACION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CALIFICACION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Calificar" class="btn btn-default" onclick="calificar()" />
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    function calificar() {
+        alert("Asignación de calificación exitosa");
+    }
+</script>

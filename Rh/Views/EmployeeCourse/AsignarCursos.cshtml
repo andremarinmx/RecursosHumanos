@@ -1,0 +1,115 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "AsignarCursos";
+}
+
+<h2>Asignar Cursos</h2>
+@using (Html.BeginForm("AsignarCursos", "EmployeeCourse"))
+{
+    <div class="form-group row">
+        <div class="col-md-9">
+            <select class="form-control" id="tipo" name="tipo" required="required" onchange="habilitar()">
+                <option value="Curso">Curso</option>
+                <option value="Paquete">Paquete</option>
+            </select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="Tipo" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <h3>Ingrese Número de Reloj</h3>
+    <input type="number" class="form-control" name="numReloj" required />
+    <h3>Ingrese el Id del curso</h3>
+    <input type="number" class="form-control" name="idCurso" id="idCurso" />
+    <h1></h1>
+    <h3>Ingrese el nombre del paquete</h3>
+    <input type="text" class="form-control" name="nombrePaquete" id="nombrePaquete" disabled />
+    <h1></h1>
+    <input type="submit" class="btn btn-success" value="Agregar" onclick=" confirmacion()" />
+    <h1></h1>
+}
+<table class="table">
+    <tr>
+        <th>
+            Paquete
+        </th>
+        <th>
+            Cursos
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Induccion
+        </td>
+        <td>
+            Introduccion a HPT
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            Introducción a JCI
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            Seguridad en el trabajo
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            Solución de problemas
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Calidad
+        </td>
+        <td>
+            Metrología
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            ¿Cómo reducir el scrap?
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            Análisis de requerimientos
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            Introducción al ISO 9001
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function confirmacion() {
+        alert("Curso asignado exitosamente");
+        location.reload();
+    }
+
+    function habilitar() {
+        let tipo = document.getElementById("tipo");
+        let nombrePaquete = document.getElementById("nombrePaquete");
+        let idCurso = document.getElementById("idCurso");
+
+        if (tipo.value == "Curso") {
+            nombrePaquete.disabled = true;
+            idCurso.disabled = false;
+        }
+        else {
+            if (tipo.value == "Paquete") {
+                idCurso.disabled = true;
+                nombrePaquete.disabled = false;
+            }
+        }
+    }
+</script>

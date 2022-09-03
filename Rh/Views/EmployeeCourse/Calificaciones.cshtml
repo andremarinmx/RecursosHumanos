@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Calificaciones";
+}
+
+<h2>Buscar Curso</h2>
+@using (Html.BeginForm("VerCursosEmpleado", "EmployeeCourse"))
+{
+    <h3>Ingrese Número de Reloj</h3>
+    <input type="number" class="form-control" name="numReloj" required />
+    <h1></h1>
+    <input type="submit" class="btn btn-success" value="Buscar" />
+}
